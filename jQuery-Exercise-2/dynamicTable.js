@@ -1,6 +1,7 @@
 let totalRecords = [];
 let rowCount = 1;
 let modifierDiv=0;
+let ccount=0;
 var hexDigits = new Array
     ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
 
@@ -51,10 +52,27 @@ let addData = () => {
             $("#lname").val("");
             $("#bg").val("");
 
+           
+            console.log($("#selectAll").prop('checked'));
+            
             if (totalRecords.length != 0) {
-                $("#upCheckbox").html(`<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)"><label class="pl-3" for="sa">Select All</label><br>`);
+                if($("#selectAll").prop('checked'))
+                {
+               
+                    let sdiv= `<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)" checked><label class="pl-3" for="sa">Select All</label><br>
+                                <div id="dpara">
+                                <p>Total ${rowCount-1} Row(s) Selected</p>
+                                <button type="button" id=bid class="btn btn-danger pl-5 pr-5" onClick="deleteAllData()">Delete All</button>
+                            </div>`;
+                    $("#upCheckbox").html(sdiv);
+                
+                 }
+                 else{
+                    $("#upCheckbox").html(`<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)"><label class="pl-3" for="sa">Select All</label><br>`);
+                 }
             }
             rowCount++;
+            ccount++
         }
     }
 }
@@ -143,6 +161,7 @@ let deleteData = (id) => {
         $(this).remove();
     });
     rowCount--;
+   
     $("#fname").val("");
     $("#lname").val("");
     $("#btnDiv").html(`<button type="button" id="addBtn" class="btn btn-default border border-primary pl-5 pr-5 ml-5" onclick="addData()" style="color:blue;">Add</button>`);
@@ -235,8 +254,9 @@ let selectAll = (check) => {
 
 let checkClicked = (cbox) => {
     let rowNumber = cbox.id.substr(5);
-    
+   
     if (cbox.checked == true) {
+     
         $(`#del${rowNumber}`).prop('disabled', false);
         let para = `<div id="cdiv">Modify Above Selected Items</div>
                     <div id="d-flex">
@@ -254,7 +274,47 @@ let checkClicked = (cbox) => {
             $("#modifier").append(para);
             modifierDiv=1;
         }
-      
+        let qflag=0;
+        
+        for (let q = 0; q < ccount; q++) {
+            
+                let element = $(`#check${q + 1}`);
+                if (typeof (element) != 'undefined' && element != null) {
+                    if($(`#check${q + 1}`).prop('checked'))
+                    {
+                            qflag=1;
+                    }
+                    else{
+                        qflag=0;
+                        break;
+                    }
+                }
+              
+        }
+        console.log(qflag);
+        if(qflag==1)
+         {
+           if($("#selectAll").prop('checked'))
+            {
+           
+                let sdiv= `<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)" checked><label class="pl-3" for="sa">Select All</label><br>
+                            <div id="dpara">
+                            <p>Total ${rowCount-1} Row(s) Selected</p>
+                            <button type="button" id=bid class="btn btn-danger pl-5 pr-5" onClick="deleteAllData()">Delete All</button>
+                        </div>`;
+                $("#upCheckbox").html(sdiv);
+            
+             }
+             else{
+                $(`#selectAll`).prop('checked',true);
+            let para = `<div id="dpara">
+                        <p>Total ${rowCount - 1} Row(s) Selected</p>
+                        <button type="button" id=bid class="btn btn-danger pl-5 pr-5" onClick="deleteAllData()">Delete All</button>
+                        </div>`;
+            $("#upCheckbox").append(para); 
+        }
+         }
+     
     }
     else {
         $(`#del${rowNumber}`).prop('disabled', true);
@@ -297,11 +357,32 @@ let checkClicked = (cbox) => {
 }
 
 let deleteAllData = () => {
-    $("#userData").fadeOut("slow",function(){
-        $(this).empty()
-    });
-    $("#upCheckbox").html("");
-    rowCount = 1;
+    // $("#userData").fadeOut("slow",function(){
+    //     $(this).empty()
+    // });
+    for (let e = 0; e < rowCount; e++) {
+        let element = $(`#check${e + 1}`);
+        if (typeof (element) != 'undefined' && element != null) {
+           if($(`#check${e + 1}`).prop('checked'))
+           {
+                $(`#row${e+1}`).fadeOut("slow",function(){
+                     $(this).remove();
+                });
+                rowCount--;
+                
+           }
+          
+     }
+    }
+    if(rowCount!=0)
+    {
+        $("#upCheckbox").html(`<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)"><label class="pl-3" for="sa">Select All</label><br>`);
+
+    }
+    else{
+        $("#upCheckbox").html("");
+    }
+    
     totalRecords.splice(0, totalRecords.length);
     $("#btnDiv").html(`<button type="button" id="addBtn" class="btn btn-default border border-primary pl-5 pr-5 ml-5" onclick="addData()" style="color:blue;">Add</button>`);
     
