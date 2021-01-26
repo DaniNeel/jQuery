@@ -53,10 +53,10 @@ let addData = () => {
             $("#bg").val("");
 
            
-            console.log($("#selectAll").prop('checked'));
+           
             
             if (totalRecords.length != 0) {
-                if($("#selectAll").prop('checked'))
+                if($('#selectAll').is(':checked'))
                 {
                
                     let sdiv= `<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)" checked><label class="pl-3" for="sa">Select All</label><br>
@@ -170,8 +170,8 @@ let deleteData = (id) => {
     let flag=0;
         for (let p = 0; p < rowCount; p++) {
             let element = $(`#check${p + 1}`);
-            if (typeof (element) != 'undefined' && element != null) {
-               if(!($(`#check${p + 1}`).prop('checked')))
+            if (element.length!=0) {
+               if(!($(`#check${p+1}`).is(':checked')))
                {
                     flag=0;
                }
@@ -198,7 +198,7 @@ let selectAll = (check) => {
         $("#upCheckbox").append(para);
         for (let e = 0; e < rowCount; e++) {
             let element = $(`#check${e + 1}`);
-            if (typeof (element) != 'undefined' && element != null) {
+            if (element.length!=0) {
                 $(`#check${e + 1}`).prop('checked', true);
                 $(`#del${e + 1}`).prop('disabled', true);
             }
@@ -224,7 +224,7 @@ let selectAll = (check) => {
         $("#dpara").remove();
         for (let e = 0; e < rowCount; e++) {
             let element = $(`#check${e + 1}`);
-            if (typeof (element) != 'undefined' && element != null) {
+            if (element.length!=0) {
                 $(`#check${e + 1}`).prop('checked', false);
                 $(`#del${e + 1}`).prop('disabled', true);
             }
@@ -232,8 +232,8 @@ let selectAll = (check) => {
         let flag=0;
         for (let e = 0; e < rowCount; e++) {
             let element = $(`#check${e + 1}`);
-            if (typeof (element) != 'undefined' && element != null) {
-               if(!($(`#check${e + 1}`).prop('checked')))
+            if (element.length!=0) {
+               if(!($(`#check${e+1}`).is(':checked')))
                {
                     flag=0;
                }
@@ -275,18 +275,21 @@ let checkClicked = (cbox) => {
             modifierDiv=1;
         }
         let qflag=0;
-        
+       
         for (let q = 0; q < ccount; q++) {
             
                 let element = $(`#check${q + 1}`);
-                if (typeof (element) != 'undefined' && element != null) {
-                    if($(`#check${q + 1}`).prop('checked'))
+              
+                if (element.length!=0) {
+                    console.log("oooooo"+$(`#check${q+1}`).is(':checked')+q);
+                    if($(`#check${q+1}`).is(':checked'))
                     {
                             qflag=1;
+                            
                     }
                     else{
                         qflag=0;
-                        break;
+                       break;
                     }
                 }
               
@@ -294,7 +297,7 @@ let checkClicked = (cbox) => {
         console.log(qflag);
         if(qflag==1)
          {
-           if($("#selectAll").prop('checked'))
+           if($('#selectAll').is(':checked'))
             {
            
                 let sdiv= `<input type="checkbox" id="selectAll" name="sa" onclick="selectAll(this)" checked><label class="pl-3" for="sa">Select All</label><br>
@@ -320,12 +323,12 @@ let checkClicked = (cbox) => {
         $(`#del${rowNumber}`).prop('disabled', true);
        
         $("#dpara").remove();
-        if($(`#selectAll`).prop('checked'))
+        if($('#selectAll').is(':checked'))
         {
-            for (let e = 0; e < rowCount; e++) {
+            for (let e = 0; e < ccount; e++) {
                 let element = $(`#check${e + 1}`);
-                if (typeof (element) != 'undefined' && element != null) {
-                    if((e+1)!=rowNumber)
+                if (element.length!=0) {
+                    if($(`#check${e+1}`).is(':checked'))
                     {
                         $(`#del${e + 1}`).prop('disabled', false);
                     }
@@ -336,8 +339,8 @@ let checkClicked = (cbox) => {
         let flag=0;
         for (let e = 0; e < rowCount; e++) {
             let element = $(`#check${e + 1}`);
-            if (typeof (element) != 'undefined' && element != null) {
-               if(!($(`#check${e + 1}`).prop('checked')))
+            if (element.length!=0) {
+               if(!($(`#check${e+1}`).is(':checked')))
                {
                     flag=0;
                }
@@ -360,10 +363,10 @@ let deleteAllData = () => {
     // $("#userData").fadeOut("slow",function(){
     //     $(this).empty()
     // });
-    for (let e = 0; e < rowCount; e++) {
+    for (let e = 0; e < ccount; e++) {
         let element = $(`#check${e + 1}`);
-        if (typeof (element) != 'undefined' && element != null) {
-           if($(`#check${e + 1}`).prop('checked'))
+        if (element.length!=0) {
+           if($(`#check${e+1}`).is(':checked'))
            {
                 $(`#row${e+1}`).fadeOut("slow",function(){
                      $(this).remove();
@@ -396,8 +399,8 @@ let applyData=()=>{
     let newFont=$("#msize").val();
     for (let e = 0; e < rowCount; e++) {
         let element = $(`#check${e + 1}`);
-        if (typeof (element) != 'undefined' && element != null) {
-            if($(`#check${e + 1}`).prop('checked'))
+        if (element.length!=0) {
+            if($(`#check${e+1}`).is(':checked'))
             {
                 $(`#first${e + 1}`).css({ "background-color": `${nc}`, "font-size": `${newFont}` });
                 $(`#last${e + 1}`).css({ "background-color": `${nc}`, "font-size": `${newFont}` });
