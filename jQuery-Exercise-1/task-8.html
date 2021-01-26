@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <head>
+        <title>Title Att</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <p>jQuery Exercises, Practice, <em title="Real life jQuery or all.">Solution</em>.</p>
+        <p id="txt"></p>
+        <button id="button1">Get Attribute</button>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $('#button1').click(function(){ 
+                let txt = $( "em" ).attr( "title");
+                $("#txt").text(txt);
+            });
+        });
+    </script>
+</html>

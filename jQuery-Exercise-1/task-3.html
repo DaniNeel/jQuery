@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <title>TextArea</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <textarea id="txtArea"></textarea>
+    <button type="button" id="txt">Get Text</button>
+    <p id="txtOut"></p>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#txt").click(function () {
+            let t=$("#txtArea").val();
+            $("#txtOut").text(`Text of text Area is : ${t}`);
+        });
+    });
+</script>
+
+</html>

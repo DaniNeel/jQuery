@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Word</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p>PHP Exercises</p>
+    <p>Python Exercises</p>
+    <p>JavaScript Exercises</p>
+    <p>jQuery Exercises</p>
+</body>
+<script>
+    $(document).ready(function () {
+        $('p').each(function() {
+            let txt = $(this).text();
+            let firstWord = txt.substr(0, txt.indexOf(" "));           
+            let remaining = txt.substr(txt.indexOf(" "));
+            let boldWord=`<p>
+                            <b>${firstWord}</b> ${remaining}
+                         </p>`;
+            $(this).html(boldWord);
+        });
+    });
+</script>
+
+</html>

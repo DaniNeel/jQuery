@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Animated</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            div {
+                background: #B0E0E6;
+                border: 1px solid #e30ae8;
+                width: 20px;
+                height: 30px;
+                margin: 0 5px;
+                float: left;
+            }
+
+            div.colored {
+                background: #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <button id="button1">Click to see the effect</button>
+
+        <script>
+          
+            $(document).ready(function () {
+                function colorChange() {
+                    $( "#div1,#div2" ).fadeToggle("slow" , colorChange);
+                }
+ 
+                colorChange();
+               $("#button1").click(function(){
+                    
+                    $( "#div1,#div2" ).toggleClass("colored");
+                });
+
+                
+            });
+        </script>
+    </body>
+
+</html>

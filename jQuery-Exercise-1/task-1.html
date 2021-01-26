@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<head>
+    <title>scrollTotop</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p style="height: 1000px;background-color: antiquewhite;">Top of the page</p>
+
+    <button type="button" id="top">Go to Top</button>
+</body>
+<script>
+    $(document).ready(function () {
+        $("#top").click(function () {
+            $(document).scrollTop(0);
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Add Class</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        p {
+            margin: 8px;
+            font-size: 16px;
+        }
+
+        .rapid_font_color {
+            color: blue;
+        }
+
+        .rapid_background {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <p>PHP</p>
+    <p>Python</p>
+    <p>JavaScript</p>
+    <p>jQuery</p>
+</body>
+<script>
+    $(document).ready(function () {
+        $('p:last').addClass("rapid_font_color rapid_background");
+    });
+</script>
+
+</html>

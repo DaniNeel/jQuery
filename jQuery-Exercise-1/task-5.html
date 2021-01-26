@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <title>insert DOM Element</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p>PHP Exercises</p>
+    <p>Python Exercises</p>
+    <p>JavaScript Exercises</p>
+    <p>jQuery Exercises</p>
+
+    <button type="button" id="top">Add Element</button>
+</body>
+<script>
+    $(document).ready(function () {
+        $('#top').click(function(){
+            $('p').each(function() {
+                let element=`<p>
+                                <b>New added Element</b>
+                            </p>`;
+                
+                $(this).after(element);
+                
+            });
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <head>
+        <title>Counter</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div  id="iddiv"> 
+             <span>This is a span</span>
+             <p>This is a Paragraph</p>
+             <div>
+                 <p>inside div div</p>
+             </div>
+             <button id="button1">Click to see the effect</button> 
+         </div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $('#button1').click(function(){
+                let l=$("#iddiv").find("*").css({"border": "2px solid red"}).length;
+                $( "body" ).prepend(l + " element(s) found" );
+            });
+        });
+    </script>
+</html>

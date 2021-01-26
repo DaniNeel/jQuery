@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <head>
+        <title>Disabled</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+     
+            <p>jQuery  <b>Exercises</b>.</p>
+            <p>JavaScript  exercises</p>?
+           
+          
+        <button id="button1">Click to Remove</button>
+      
+        <script>
+            $(document).ready(function () {
+                $('#button1').click(function(){ 
+                    $("p").find('*').empty();
+                });
+            });
+        </script>
+      </body>
+</html>

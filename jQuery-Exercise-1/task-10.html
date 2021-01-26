@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+    <head>
+        <title>Disabled</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form>
+        First name: <input type="text"  name="fname" disabled><br>
+        Last name: <input type="text" name="lname"  disabled><br>
+        </form>
+        <button id="button1">Click to see the  effect</button>
+      
+        <script>
+            $(document).ready(function () {
+                $('#button1').click(function(){ 
+                    $("input:disabled").css({"background-color":"yellow"});
+                });
+            });
+        </script>
+      </body>
+</html>

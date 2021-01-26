@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Disabled</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+    div {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        float: left;
+        border: 2px solid green;
+    }
+
+    .red {
+        background: red;
+    }
+</style>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <button id="button1">Click to see the effect</button>
+    <script>
+        $(document).ready(function () {
+            $('#button1').click(function () {
+                $("div:eq(3)").toggleClass("red");
+            });
+        });
+    </script>
+</body>
+
+
+</html>
