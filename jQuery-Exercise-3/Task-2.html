@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tabs</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <style>
+        @media only screen and (max-width: 1600px) {
+            #tabs-1 {
+                display: block;
+            }
+
+            #accordion {
+                display: none;
+            }
+
+            
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            #tabs-1 {
+                display: none;
+            }
+
+            #accordion {
+                display: block;
+            }
+
+           
+        }
+    </style>
+</head>
+
+<body onresize="resize()">
+    <div class="container">
+
+        <div id="tabs-1">
+            <ul>
+                <li><a href="#tabs-2">London</a></li>
+                <li><a href="#tabs-3">Paris</a></li>
+                <li><a href="#tabs-4">Tokyo</a></li>
+            </ul>
+            <div id="tabs-2">
+                <p>London........................................</p>
+            </div>
+            <div id="tabs-3">
+                <p>Paris........................................</p>
+            </div>
+            <div id="tabs-4">
+                <p>Tokyo.......................................</p>
+            </div>
+        </div>
+    </div>
+    <div id="accordion">
+        <h3>London</h3>
+        <div>
+            <p>London........................................</p>
+        </div>
+        <h3>Paris</h3>
+        <div>
+            <p>Paris........................................</p>
+        </div>
+        <h3>Tokyo</h3>
+        <div>
+            <p>Tokyo.......................................</p>
+        </div>
+
+    </div>
+    <script>
+        $(function () {
+            let activeTab = 0;
+            let activeAcc = 0;
+            $("#accordion").accordion();
+            $("#tabs-1").tabs();
+          
+
+            });
+        
+            function resize() {
+                activeAcc = $("#accordion").accordion("option", "active");
+                let $tabs = $('#tabs-1').tabs();
+            // jquery ui 1.8
+                 activeTab = $tabs.tabs('option', 'active');
+                if ($(window).width() <= 600) {
+
+                   
+                    console.log("t" + activeTab);
+                    $("#accordion").accordion("option", "active", activeTab);
+
+                }
+                if ($(window).width() >= 600) {
+                   
+                    console.log("A" + activeAcc);
+                    $("#tabs-1").tabs("option", "active", activeAcc);
+
+                }
+
+
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</body>
+
+</html>
