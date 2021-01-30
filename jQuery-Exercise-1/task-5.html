@@ -16,14 +16,8 @@
 <script>
     $(document).ready(function () {
         $('#top').click(function(){
-            $('p').each(function() {
-                let element=`<p>
-                                <b>New added Element</b>
-                            </p>`;
-                
-                $(this).after(element);
-                
-            });
+            let element=document.createTextNode( "New Added Element" );
+            $( "p" ).after(element);
         });
     });
 </script>
